@@ -17,7 +17,12 @@ const userSchema = new Schema(
             type: String,
             required: true,
             minlength: 6
-        }
+        },
+        jobs: [{
+            type: mongoose.Types.ObjectId,
+            ref: "Job",
+            required: true
+        }]
     }
 )
 
