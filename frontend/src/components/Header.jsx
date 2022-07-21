@@ -1,12 +1,17 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { authActions } from './store/store'
 
 const Header = () => {
+    const dispatch = useDispatch()
+    const isLoggedIn = useSelector((state) => state.isLoggedIn)
     return (
         <>
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div className=" container container-fluid d-flex justify-content-between">
-                    <a className="navbar-brand">Job Hunter</a>
-                    <button className="btn btn-primary" type="button">Logout</button>
+                    <Link to="/" className="navbar-brand">Job Hunter</Link>
+                    <Link to="/" className="btn btn-primary" type="button" onClick={() => dispatch(authActions.logout())}>Logout</Link>
                 </div>
             </nav>
         </>
