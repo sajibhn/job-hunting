@@ -48,13 +48,17 @@ const UpdateJob = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (inputs.name.trim() === '' || inputs.position.trim() === '' || inputs.link.trim() === '') {
+            return window.alert('please fill all fields')
+        }
         sendRequest()
+            .then(() => window.alert("New Job Added"))
             .then((data) => navigate('/'))
     }
 
     return (
         <>
-            <section className="vh-100" style={{ backgroundColor: "#eee" }}>
+            <section className="vh-100">
                 <div className="container h-100">
                     <div className="row d-flex justify-content-center align-items-center h-100">
                         <div className="col-lg-12 col-xl-11">
