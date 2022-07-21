@@ -61,7 +61,7 @@ const Auth = () => {
 
     return (
         <>
-            <section className="vh-100" style={{ backgroundColor: "#eee" }}>
+            <section className="vh-100">
                 <div className="container h-100">
                     <div className="row d-flex justify-content-center align-items-center h-100">
                         <div className="col-lg-12 col-xl-11">
@@ -81,7 +81,7 @@ const Auth = () => {
                                                     <div className="d-flex flex-row align-items-center mb-4">
 
                                                         <div className="form-outline flex-fill mb-0">
-                                                            <input type="text" name='name' value={inputs.name} className="form-control" onChange={handleChange} />
+                                                            <input type="text" name='name' value={inputs.name} className="form-control" onChange={handleChange} autoComplete="off" />
                                                             <label className="form-label">Your Name: (optional)</label>
                                                         </div>
                                                     </div>
@@ -91,7 +91,7 @@ const Auth = () => {
                                                 <div className="d-flex flex-row align-items-center mb-4">
 
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="email" name='email' value={inputs.email} className="form-control" onChange={handleChange} />
+                                                        <input type="email" name='email' value={inputs.email} className="form-control" onChange={handleChange} autoComplete="off" />
                                                         <label className="form-label" >Your Email</label>
                                                     </div>
                                                 </div>
@@ -99,7 +99,7 @@ const Auth = () => {
                                                 <div className="d-flex flex-row align-items-center mb-4">
 
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="password" name='password' value={inputs.password} className="form-control" onChange={handleChange} />
+                                                        <input type="password" name='password' value={inputs.password} className="form-control" onChange={handleChange} autoComplete="off" />
                                                         <label className="form-label" >Password</label>
                                                     </div>
                                                 </div>

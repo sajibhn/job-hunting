@@ -19,7 +19,7 @@ const Jobs = () => {
 
     useEffect(() => {
         sendRequest().then((data) => setJobs(data.user.jobs))
-    }, [sendRequest])
+    }, [jobs])
 
     const deleteRequest = async (del_id) => {
         const res = await axios
@@ -40,19 +40,21 @@ const Jobs = () => {
                 <button className="btn btn-primary" onClick={() => navigate("/addjob")}><i className="fa fa-plus"></i> Add New</button>
             </div>
 
-            {jobs && jobs.map((job, index) => {
-                return (
-                    <div className=" d-flex flex-wrap gap-5 mt-5 " key={index}>
-                        <div className='px-4 py-5 border border-primary rounded'>
-                            <h5 className='lead'>{job?.name}</h5>
-                            <h5 className='lead'>{job?.position}</h5>
-                            <a href={job?.link} target="_blank" rel='noreferrer' className='d-block text-dark text-decoration-none'>Link</a>
-                            <button onClick={() => { navigate(`/updatejob/${job?._id}`) }} className='btn btn-primary mt-3'>Edit</button>
-                            <button onClick={() => handleDelete(job._id)} className='btn btn-warning mt-3 ms-2'>delete</button>
+            <div className=" d-flex justify-content-center flex-wrap gap-5 mt-5 " >
+                {jobs && jobs.map((job, index) => {
+                    return (
+                        <div className='border border-primary rounded job__container' key={index}>
+                            <h3 className='job__title'>Company</h3>
+                            <p className='job__subtitle'>{job?.name}</p>
+                            <h3 className='job__title'>Position</h3>
+                            <p className='job__subtitle'>{job?.position}</p>
+                            <a href={job?.link} target="_blank" rel='noreferrer' className='d-block text-white btn btn-primary  text-decoration-none mb-2'>View</a>
+                            <button onClick={() => { navigate(`/updatejob/${job?._id}`) }} className='btn btn-success mt-3'>Edit</button>
+                            <button onClick={() => handleDelete(job._id)} className='btn btn-warning mt-3 ms-2'>Delete</button>
                         </div>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </div>
     )
 }
