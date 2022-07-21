@@ -1,8 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { authActions } from './store/store';
+import { useNavigate } from 'react-router-dom';
+
 
 const Auth = () => {
     const [isSignup, setIsSignup] = useState(false)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [inputs, setInputs] = useState({
         name: "",
         email: "",
@@ -16,8 +23,32 @@ const Auth = () => {
         }));
     };
 
+    const sendRequest = async (type = "login") => {
+        const res = await axios
+            .post(`http://localhost:5000/api/user/${type}`, {
+                name: inputs.name,
+                email: inputs.password,
+                password: inputs.password
+            }).catch((err) => console.log(err))
+
+        const data = await res.data;
+        console.log(data)
+        return data
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (isSignup) {
+            sendRequest("signup")
+                .then((data) => localStorage.setItem("userId", data.user._id))
+                .then(() => dispatch(authActions.login()))
+                .then(() => navigate("/"))
+        } else {
+            sendRequest()
+                .then((data) => localStorage.setItem("userId", data.user._id))
+                .then(() => dispatch(authActions.login()))
+                .then(() => navigate("/"));
+        }
     }
 
     return (
@@ -35,7 +66,7 @@ const Auth = () => {
                                                 {isSignup ? 'Sign up' : 'Login'}
                                             </p>
 
-                                            <form className="mx-1 mx-md-4">
+                                            <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
 
                                                 {isSignup && <>
 
@@ -43,7 +74,7 @@ const Auth = () => {
                                                         <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                                         <div className="form-outline flex-fill mb-0">
                                                             <input type="text" name='name' value={inputs.name} className="form-control" onChange={handleChange} />
-                                                            <label className="form-label" for="form3Example1c">Your Name</label>
+                                                            <label className="form-label">Your Name</label>
                                                         </div>
                                                     </div>
 
@@ -53,7 +84,7 @@ const Auth = () => {
                                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input type="email" name='email' value={inputs.email} className="form-control" onChange={handleChange} />
-                                                        <label className="form-label" for="form3Example3c">Your Email</label>
+                                                        <label className="form-label" >Your Email</label>
                                                     </div>
                                                 </div>
 
@@ -61,11 +92,11 @@ const Auth = () => {
                                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input type="password" name='password' value={inputs.password} className="form-control" onChange={handleChange} />
-                                                        <label className="form-label" for="form3Example4c">Password</label>
+                                                        <label className="form-label" >Password</label>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                    <button type="button" className="btn btn-primary btn-lg">{!isSignup ? 'Login' : 'Signup'}</button>
+                                                    <button type="submit" className="btn btn-primary btn-lg">Submit</button>
                                                 </div>
 
 
