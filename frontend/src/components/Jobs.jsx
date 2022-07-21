@@ -6,17 +6,19 @@ import { useNavigate } from 'react-router-dom'
 const Jobs = () => {
     const navigate = useNavigate()
     const [jobs, setJobs] = useState([])
+    const id = localStorage.getItem("userId");
+
 
     const sendRequest = async () => {
         const res = await axios
-            .get('http://localhost:5000/api/jobs').catch((err) => console.log(err))
+            .get(`http://localhost:5000/api/jobs/user/jobs/${id}`).catch((err) => console.log(err))
 
         const data = await res.data;
         return data
     }
 
     useEffect(() => {
-        sendRequest().then((data) => setJobs(data.jobs))
+        sendRequest().then((data) => setJobs(data.user.jobs))
     }, [])
 
 
