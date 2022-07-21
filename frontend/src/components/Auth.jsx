@@ -32,22 +32,30 @@ const Auth = () => {
             }).catch((err) => console.log(err))
 
         const data = await res.data;
-        console.log(data)
         return data
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (inputs.email.trim() === '' || inputs.password.trim() === '') {
+            return window.alert('please fill all fields')
+        } else if (inputs.password.trim().length < 6) {
+            return window.alert('minimum password length is 6')
+        }
+
+
         if (isSignup) {
             sendRequest("signup")
                 .then((data) => localStorage.setItem("userId", data.user._id))
                 .then(() => dispatch(authActions.login()))
                 .then(() => navigate("/"))
+                .catch((err) => window.alert('Email already exist'))
         } else {
             sendRequest()
                 .then((data) => localStorage.setItem("userId", data.user._id))
                 .then(() => dispatch(authActions.login()))
-                .then(() => navigate("/"));
+                .then(() => navigate("/"))
+                .catch((err) => window.alert('please check your credentials'))
         }
     }
 
@@ -74,7 +82,7 @@ const Auth = () => {
 
                                                         <div className="form-outline flex-fill mb-0">
                                                             <input type="text" name='name' value={inputs.name} className="form-control" onChange={handleChange} />
-                                                            <label className="form-label">Your Name</label>
+                                                            <label className="form-label">Your Name: (optional)</label>
                                                         </div>
                                                     </div>
 
@@ -108,8 +116,8 @@ const Auth = () => {
                                         </div>
                                         <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                                                className="img-fluid" alt="Sample image" />
+                                            <img src="/images/login.svg"
+                                                className="img-fluid" alt="login signup" />
 
                                         </div>
                                     </div>
