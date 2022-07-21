@@ -35,6 +35,19 @@ const Auth = () => {
         return data
     }
 
+    const dummyRequest = async () => {
+
+        const res = await axios
+            .post(`http://localhost:5000/api/user/login`, {
+                name: 'test',
+                email: 'test@gmail.com',
+                password: '123456'
+            }).catch((err) => console.log(err))
+
+        const data = await res.data;
+        return data
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if (inputs.email.trim() === '' || inputs.password.trim() === '') {
@@ -59,6 +72,13 @@ const Auth = () => {
         }
     }
 
+    const dummyLogin = (e) => {
+        dummyRequest()
+            .then((data) => localStorage.setItem("userId", "62d9a665f53261292d475f94"))
+            .then(() => dispatch(authActions.login()))
+            .then(() => navigate("/"))
+            .catch((err) => window.alert('There was error'))
+    }
     return (
         <>
             <section className="vh-100">
@@ -107,18 +127,18 @@ const Auth = () => {
                                                     <button type="submit" className="btn btn-primary btn-lg">Submit</button>
                                                 </div>
 
-
                                             </form>
+                                            <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                <button type="submit" className="btn btn-warning btn-lg" onClick={dummyLogin}>Dummy Login</button>
+                                            </div>
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                 <button className=" btn btn-success text-white " onClick={() => setIsSignup(!isSignup)}>{!isSignup ? 'SignUp' : 'Login'}</button>
                                             </div>
 
                                         </div>
                                         <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
                                             <img src="/images/login.svg"
                                                 className="img-fluid" alt="login signup" />
-
                                         </div>
                                     </div>
                                 </div>
