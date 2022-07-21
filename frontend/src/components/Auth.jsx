@@ -27,7 +27,7 @@ const Auth = () => {
         const res = await axios
             .post(`http://localhost:5000/api/user/${type}`, {
                 name: inputs.name,
-                email: inputs.password,
+                email: inputs.email,
                 password: inputs.password
             }).catch((err) => console.log(err))
 
@@ -71,7 +71,7 @@ const Auth = () => {
                                                 {isSignup && <>
 
                                                     <div className="d-flex flex-row align-items-center mb-4">
-                                                        <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+
                                                         <div className="form-outline flex-fill mb-0">
                                                             <input type="text" name='name' value={inputs.name} className="form-control" onChange={handleChange} />
                                                             <label className="form-label">Your Name</label>
@@ -81,7 +81,7 @@ const Auth = () => {
                                                 </>}
 
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
+
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input type="email" name='email' value={inputs.email} className="form-control" onChange={handleChange} />
                                                         <label className="form-label" >Your Email</label>
@@ -89,7 +89,7 @@ const Auth = () => {
                                                 </div>
 
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
+
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input type="password" name='password' value={inputs.password} className="form-control" onChange={handleChange} />
                                                         <label className="form-label" >Password</label>
