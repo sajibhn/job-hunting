@@ -11,6 +11,7 @@ import Jobs from './components/Jobs';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './components/store/store';
 import { useEffect } from 'react';
+import UpdateJob from './components/UpdateJob';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -32,6 +33,7 @@ const App = () => {
             <>
               <Route path='/' element={<Jobs />} />
               <Route path='/addjob' element={<AddJob />} />
+              <Route path='/updatejob/:id' element={<UpdateJob />} />
             </>
           )}
 

@@ -18,6 +18,20 @@ export const getAllJobs = async (req, res) => {
     return res.status(200).json({ jobs })
 }
 
+export const getById = async (req, res, next) => {
+    const id = req.params.id;
+    let job;
+    try {
+        job = await Job.findById(id);
+    } catch (err) {
+        return console.log(err);
+    }
+    if (!job) {
+        return res.status(404).json({ message: "No Job Found" });
+    }
+    return res.status(200).json({ job });
+};
+
 export const addJobs = async (req, res) => {
     const { name, link, position, user } = req.body
 

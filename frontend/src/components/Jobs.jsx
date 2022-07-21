@@ -34,7 +34,7 @@ const Jobs = () => {
                             <h5 className='lead'>{job?.name}</h5>
                             <h5 className='lead'>{job?.position}</h5>
                             <a href={job?.link} target="_blank" rel='noreferrer' className='d-block text-dark text-decoration-none'>Link</a>
-                            <button className='btn btn-primary mt-3'>Edit</button>
+                            <button onClick={() => { navigate(`/updatejob/${job?._id}`) }} className='btn btn-primary mt-3'>Edit</button>
                         </div>
                     </div>
                 )

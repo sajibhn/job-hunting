@@ -1,11 +1,10 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { authActions } from './store/store'
 
 const Header = () => {
     const dispatch = useDispatch()
-    const isLoggedIn = useSelector((state) => state.isLoggedIn)
     return (
         <>
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
