@@ -18,6 +18,6 @@ mongoose.connect(`${MONGO_URL}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-    .then(() => app.listen(PORT))
+    .then(() => app.listen(PORT || 5000))
     .then(() => console.log('connected db and port'))
     .catch((err) => console.log(err))
