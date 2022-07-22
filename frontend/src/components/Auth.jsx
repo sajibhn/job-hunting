@@ -38,7 +38,7 @@ const Auth = () => {
     const dummyRequest = async () => {
 
         const res = await axios
-            .post(`http://localhost:5000/api/user/login`, {
+            .post(`https://mern-job-hunting.herokuapp.com/api/user/login`, {
                 name: 'test',
                 email: 'test@gmail.com',
                 password: '123456'
