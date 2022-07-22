@@ -19,7 +19,7 @@ const AddJob = () => {
 
     const sendRequest = async () => {
         const res = await axios
-            .post(`http://localhost:5000/api/jobs/add`, {
+            .post(`https://mern-job-hunting.herokuapp.com/api/jobs/add`, {
                 name: inputs.name,
                 position: inputs.position,
                 link: inputs.link,

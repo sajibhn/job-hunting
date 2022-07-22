@@ -11,7 +11,7 @@ const Jobs = () => {
 
     const sendRequest = async () => {
         const res = await axios
-            .get(`http://localhost:5000/api/jobs/user/jobs/${id}`).catch((err) => console.log(err))
+            .get(`https://mern-job-hunting.herokuapp.com/api/jobs/user/jobs/${id}`).catch((err) => console.log(err))
 
         const data = await res.data;
         return data
