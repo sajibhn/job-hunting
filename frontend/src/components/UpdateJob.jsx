@@ -35,7 +35,7 @@ const UpdateJob = () => {
 
     const sendRequest = async () => {
         const res = await axios
-            .put(`http://localhost:5000/api/jobs/update/${id}`, {
+            .put(`https://mern-job-hunting.herokuapp.com/api/jobs/update/${id}`, {
                 name: inputs.name,
                 position: inputs.position,
                 link: inputs.link,

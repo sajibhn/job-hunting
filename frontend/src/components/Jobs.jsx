@@ -23,7 +23,7 @@ const Jobs = () => {
 
     const deleteRequest = async (del_id) => {
         const res = await axios
-            .delete(`http://localhost:5000/api/jobs/delete/${del_id}`)
+            .delete(`https://mern-job-hunting.herokuapp.com/api/jobs/delete/${del_id}`)
             .catch((err) => console.log(err));
         const data = await res.data;
         return data;
