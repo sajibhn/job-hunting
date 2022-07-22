@@ -17,7 +17,7 @@ const UpdateJob = () => {
 
     const fetchDetails = async () => {
         const res = await axios
-            .get(`http://localhost:5000/api/jobs/${id}`)
+            .get(`https://mern-job-hunting.herokuapp.com/api/jobs/${id}`)
             .catch((err) => console.log(err));
         const data = await res.data;
         return data;
