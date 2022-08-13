@@ -48,7 +48,9 @@ const Jobs = () => {
                             <p className='job__subtitle'>{job?.name}</p>
                             <h3 className='job__title'>Position</h3>
                             <p className='job__subtitle'>{job?.position}</p>
-                            <a href={job?.link} target="_blank" rel='noreferrer' className='d-block text-white btn btn-primary  text-decoration-none mb-2'>View</a>
+                            <div>
+                                <a href={job?.link} target="_blank" rel='noreferrer' className=' px-4 text-white btn btn-primary  text-decoration-none mb-2'>Link</a>
+                            </div>
                             <button onClick={() => { navigate(`/updatejob/${job?._id}`) }} className='btn btn-success mt-3'>Edit</button>
                             <button onClick={() => handleDelete(job._id)} className='btn btn-warning mt-3 ms-2'>Delete</button>
                         </div>
