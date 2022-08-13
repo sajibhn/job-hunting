@@ -52,7 +52,6 @@ const AddJob = () => {
 
                                             <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                                                 Add A New Job
-                                                {inputs.position}
                                             </p>
                                             <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                                                 <div className="d-flex flex-row align-items-center mb-4">
