@@ -42,12 +42,16 @@ const Jobs = () => {
 
             <div className=" d-flex justify-content-center flex-wrap gap-5 mt-5 " >
                 {jobs && jobs.map((job, index) => {
+                    var dt = new Date(job?.date);
+
                     return (
                         <div className='border border-primary rounded job__container' key={index}>
                             <h3 className='job__title'>Company</h3>
                             <p className='job__subtitle'>{job?.name}</p>
                             <h3 className='job__title'>Position</h3>
                             <p className='job__subtitle'>{job?.position}</p>
+                            <h3 className='job__title'>Date</h3>
+                            <p className='job__subtitle'>{dt.getFullYear() + "/" + (dt.getMonth() + 1) + "/" + dt.getDate()}</p>
                             <div>
                                 <a href={job?.link} target="_blank" rel='noreferrer' className=' px-4 text-white btn btn-primary  text-decoration-none mb-2'>Link</a>
                             </div>
