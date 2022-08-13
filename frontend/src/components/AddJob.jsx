@@ -6,7 +6,7 @@ const AddJob = () => {
     const navigate = useNavigate()
     const [inputs, setInputs] = useState({
         name: "",
-        position: "",
+        position: "Full Stack",
         link: "",
     });
 
@@ -52,6 +52,7 @@ const AddJob = () => {
 
                                             <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                                                 Add A New Job
+                                                {inputs.position}
                                             </p>
                                             <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                                                 <div className="d-flex flex-row align-items-center mb-4">
@@ -66,7 +67,12 @@ const AddJob = () => {
                                                 <div className="d-flex flex-row align-items-center mb-4">
 
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="text" name='position' value={inputs.position} className="form-control" onChange={handleChange} autoComplete="off" />
+                                                        <select className="form-select" name='position' value={inputs.position} onChange={handleChange} >
+                                                            <option value="Full Stack">Full Stack</option>
+                                                            <option value="Frontend">Frontend</option>
+                                                            <option value="Backend">Backend</option>
+                                                            <option value="Internship">Internship</option>
+                                                        </select>
                                                         <label className="form-label" >Position</label>
                                                     </div>
                                                 </div>

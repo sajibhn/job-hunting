@@ -83,7 +83,12 @@ const UpdateJob = () => {
                                                 <div className="d-flex flex-row align-items-center mb-4">
 
                                                     <div className="form-outline flex-fill mb-0">
-                                                        <input type="text" name='position' value={inputs.position} className="form-control" onChange={handleChange} />
+                                                        <select className="form-select" name='position' value={inputs.position} onChange={handleChange} >
+                                                            <option value="Full Stack">Full Stack</option>
+                                                            <option value="Frontend">Frontend</option>
+                                                            <option value="Backend">Backend</option>
+                                                            <option value="Internship">Internship</option>
+                                                        </select>
                                                         <label className="form-label" >Position</label>
                                                     </div>
                                                 </div>
@@ -96,7 +101,7 @@ const UpdateJob = () => {
                                                     </div>
                                                 </div>
                                                 <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                    <button type="submit" className="btn btn-primary btn-lg px-5">Add</button>
+                                                    <button type="submit" className="btn btn-primary btn-lg px-5">Update</button>
                                                 </div>
                                             </form>
                                         </div>
