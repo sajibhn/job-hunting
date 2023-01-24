@@ -7,7 +7,7 @@ I have used React JS and Bootstrap to build the UI, and Express and MongoDB as a
 ## Links
 
 - Solution URL: https://github.com/sajibhn/job-hunting
-- Live Site URL: https://job-hunting-silk.vercel.app/
+- Demo URL: https://youtu.be/ykfxN1mVMcE
 
 
 ## Technologies
